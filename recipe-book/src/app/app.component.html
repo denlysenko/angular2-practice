@@ -1,0 +1,12 @@
+<div class="ui container">
+  <header>
+    <nav class="ui menu">
+      <div class="header item">Recipe Book</div>
+      <a class="item" [routerLink]="['/recipes']" routerLinkActive="active">Recipes</a>
+      <a class="item" [routerLink]="['/shopping-list']" routerLinkActive="active">Shopping List</a>
+    </nav>
+  </header>
+  <div class="ui raised segment">
+    <router-outlet></router-outlet>
+  </div>
+</div>

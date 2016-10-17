@@ -1,0 +1,16 @@
+<div class="ui grid">
+  <div class="eight wide column">
+    <div class="ui input fluid">
+      <input type="text" placeholder="New Item" [(ngModel)]="item.name">
+    </div>
+  </div>
+  <div class="four wide column">
+    <div class="ui input fluid">
+      <input type="text" placeholder="Amount" [(ngModel)]="item.amount">
+    </div>
+  </div>
+  <div class="four wide column">
+    <!--<div class="ui green button right floated" (click)="onSave()">Save</div>-->
+    <button class="ui red button right floated" (click)="onDelete()">Delete</button>
+  </div>
+</div>

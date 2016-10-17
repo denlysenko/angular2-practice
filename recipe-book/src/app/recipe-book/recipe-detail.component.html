@@ -1,0 +1,32 @@
+<div *ngIf="!recipe">
+  <h1>Please choose or create recipe</h1>
+</div>
+<div *ngIf="recipe" class="ui items">
+  <div class="item">
+    <div class="image">
+      <img [src]="recipe.imageUrl" alt="{{ recipe.name }}">
+    </div>
+    <div class="middle aligned content">
+      <a class="header">
+        {{ recipe.name }}
+      </a>
+       <div class="meta">
+         <span>
+          <button class="ui blue button" (click)="onEdit()">Edit</button>
+          <button class="ui red button" (click)="onDelete()">Delete</button>
+         </span>
+      </div>
+      <div class="description">
+        {{ recipe.content }}
+      </div>
+      <div class="extra">
+        <button class="ui pink button" (click)="onAddToShoppingList()">Add all to shopping list</button>
+    <ul>
+      <li *ngFor="let item of recipe.ingredients">
+        {{ item.name }}({{ item.amount }})
+      </li>
+    </ul>
+      </div>
+    </div>
+  </div>
+</div>

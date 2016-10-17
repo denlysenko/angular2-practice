@@ -1,0 +1,16 @@
+<div>
+  <h3 class="ui header">
+    Recipe list 
+    <button class="ui pink basic right floated button" (click)="onAddRecipe()">
+      Add Recipe
+      </button>
+    </h3>
+  <div class="ui big celled list">
+    <div class="item" *ngFor="let item of recipes" [ngClass]='{active: item === selectedItem}' (click)="selectItem(item)">
+      <div class="content">
+        <img class="ui middle aligned small image bordered" [src]="item.imageUrl" alt="{{item.name}}">
+        <span>{{ item.name }}</span>
+      </div>
+    </div>
+  </div>
+</div>

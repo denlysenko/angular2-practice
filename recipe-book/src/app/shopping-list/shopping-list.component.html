@@ -1,0 +1,13 @@
+<h3 class="ui header">Shopping list</h3>
+<shopping-list-edit [index]="selectedItemIndex" [ingredient]="selectedItem"></shopping-list-edit>
+<div class="ui divider"></div>
+<div>
+  <button class="ui pink basic button" (click)="onAddItem()">Add new Item</button>
+  <div class="ui big celled list">
+    <div class="item" *ngFor="let item of shoppingList" [ngClass]='{active: item === selectedItem}' (click)="selectItem(item, index)">
+      <div class="content">
+        <div class="header">{{ item.name }} ({{ item.amount }})</div>
+      </div>
+    </div>
+  </div>
+</div>

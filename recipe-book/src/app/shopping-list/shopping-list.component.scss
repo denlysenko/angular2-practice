@@ -1,0 +1,7 @@
+.item {
+  cursor: pointer;
+
+  &.active {
+    background-color: rgba(34, 36, 38, 0.15);
+  }
+}

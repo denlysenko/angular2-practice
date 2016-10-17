@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="large-12 columns">
+    <button class="button alert" (click)="goBack()">Go Back</button>
+  </div>
+  <div class="large-5 columns large-offset-1">
+    <h3>{{ business.company }}</h3>
+    <p>Category: {{ business.category }}</p>
+    <p>Years In Business: {{ business.years_in_business }}</p>
+    <p>{{ business.description }}</p>
+  </div>
+  <div class="large-5 columns large-offset-1">
+    <h4>Contact Info</h4>
+    <ul>
+      <li>Phone: {{ business.phone }}</li>
+      <li>Email: {{ business.email }}</li>
+      <li>Street: {{ business.street_address }}</li>
+      <li>City: {{ business.city }}</li>
+      <li>State: {{ business.state }}</li>
+      <li>Zipcode: {{ business.zipcode }}</li>
+    </ul>
+  </div>
+</div>

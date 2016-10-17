@@ -1,0 +1,17 @@
+<form [formGroup]="itemForm" (ngSubmit)="onClick()">
+  <div class="ui grid">
+    <div class="eight wide column">
+      <div class="ui input fluid">
+        <input type="text" placeholder="New Item" [(ngModel)]="item.name" formControlName="itemName">
+      </div>
+    </div>
+    <div class="four wide column">
+      <div class="ui input fluid">
+        <input type="text" placeholder="Amount" [(ngModel)]="item.amount" formControlName="itemAmount">
+      </div>
+    </div>
+    <div class="four wide column">
+      <button type="submit" class="ui button right floated" [ngClass]="{ disabled: !itemForm.valid }">Add</button>
+    </div>
+  </div>
+</form>

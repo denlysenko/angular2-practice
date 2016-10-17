@@ -1,0 +1,19 @@
+<h2 class="ui header">{{ ingredient ? 'Edit' : 'Add' }} Item</h2>
+<form class="ui grid" #itemFormRef="ngForm" (ngSubmit)="onSubmit(itemFormRef)">
+  <div class="six wide column">
+    <div class="ui labeled fluid input">
+      <label for="itemName" class="ui label">Name</label>
+      <input id="itemName" type="text" [ngModel]="ingredient?.name" name="itemName" required>
+    </div>
+  </div>
+  <div class="six wide column">
+    <div class="ui labeled fluid input">
+      <label for="itemAmount" class="ui label">Amount</label>
+      <input id="itemAmount" type="text" [ngModel]="ingredient?.amount" name="itemAmount" required>
+    </div>
+  </div>
+  <div class="three wide column">
+    <button class="ui primary button" type="submit">{{ ingredient ? 'Edit' : 'Add' }}</button>
+    <button class="ui red button" *ngIf="ingredient" type="button" (click)="onDelete()">Delete</button>
+  </div>
+</form>

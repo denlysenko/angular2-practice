@@ -1,0 +1,58 @@
+<div>
+  <form class="ui form" [formGroup]="recipeForm" (ngSubmit)="onSubmit()" #recipeFormRef="ngForm">
+    <div class="field">
+      <button type="submit" class="ui primary button" [disabled]="!recipeFormRef.valid">Save</button>
+      <button type="button" class="ui button" (click)="onCancel()">Cancel</button>
+    </div>
+    <div class="ui divider"></div>
+    <div class="field">
+      <label for="name">Title</label>
+      <input type="text" id="title" formControlName="name">
+    </div>
+    <div class="field">
+      <label for="image-url">Image Url</label>
+      <input type="text" id="image-url" #imageUrl formControlName="imageUrl">
+    </div>
+    <div class="ui small image">
+      <img [src]="imageUrl.value" alt="preview">
+    </div>
+    <div class="field">
+      <label for="content">Content</label>
+      <textarea id="content" rows="5" formControlName="content"></textarea>
+    </div>
+    <div class="field">
+      <label>Ingredients</label>
+      <div *ngFor="let item of recipeForm.controls.ingredients.controls; let index = index">
+        <div class="two fields" >
+          <div class="ui labeled input field">
+            <label class="ui label">Name</label>
+            <input type="text" [formControl]="item.controls.name">
+          </div>
+          <div class="ui labeled input field">
+            <label class="ui label">Amount</label>
+            <input type="text" [formControl]="item.controls.amount">
+          </div>
+          <button type="button" class="ui icon button" (click)="onRemoveItem(index)">
+            <i class="close icon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Add Ingredient</label>
+      <div class="two fields">
+        <div class="ui labeled input field">
+          <label class="ui label">Name</label>
+          <input type="text" #itemName>
+        </div>
+        <div class="ui labeled input field">
+          <label class="ui label">Amount</label>
+          <input type="text" #itemAmount>
+        </div>
+        <button type="button" class="ui icon button" (click)="onAddItem(itemName.value, itemAmount.value)">
+          <i class="plus icon"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

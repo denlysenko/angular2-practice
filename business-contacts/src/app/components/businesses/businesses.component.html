@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="large-6 columns">
+    <button class="button" (click)="enableForm()">Add Business</button>
+  </div>
+  <div class="large-6 columns">
+    <label>Filter Category:
+      <select (change)="filterByCategory(filterCategoryRef.value)" #filterCategoryRef>
+        <option value="">Select</option>
+        <option *ngFor="let category of categories" value="{{ category.name }}">{{ category.name }}</option>
+      </select>
+    </label>
+  </div>
+</div>
+<bc-business-details *ngIf="currentBusiness" [business]="currentBusiness" (canceled)="setCurrentBusiness(null)"></bc-business-details>
+<bc-business-form *ngIf="isFormEnabled" [business]="editedBusiness" (saved)="onSave()"></bc-business-form>
+<div class="row">
+  <div class="large-12 columns">
+    <table>
+      <thead>
+      <tr>
+        <th>Company</th>
+        <th>Category</th>
+        <th>Phone</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let business of businesses">
+        <td>{{ business.company }}</td>
+        <td>{{ business.category }}</td>
+        <td>{{ business.phone }}</td>
+        <td>
+          <button class="button" (click)="setCurrentBusiness(business)">More</button>
+          <button class="button secondary" (click)="enableForm(business)">Edit</button>
+          <button class="button alert" (click)="removeBusiness(business.$key)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

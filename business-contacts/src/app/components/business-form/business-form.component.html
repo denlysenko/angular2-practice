@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="large-12 columns">
+    <h3>{{ business ? 'Edit Business' : 'Add Business' }}</h3>
+    <form [formGroup]="businessForm" (submit)="saveBusiness()">
+      <div class="row">
+        <div class="large-6 columns">
+          <label [ngClass]="{ 'is-invalid-label': !businessForm.controls['company'].pristine && !businessForm.controls['company'].valid }">Company
+            <input type="text" placeholder="Company Name" formControlName="company" [ngClass]="{ 'is-invalid-input': !businessForm.controls['company'].pristine && !businessForm.controls['company'].valid }">
+          </label>
+          <small *ngIf="!businessForm.controls['company'].pristine && businessForm.controls['company'].errors" class="form-error is-visible">Company Name is Required!</small>
+        </div>
+        <div class="large-6 columns">
+          <label [ngClass]="{ 'is-invalid-label': !businessForm.controls['category'].pristine && !businessForm.controls['category'].valid }">Category
+            <select formControlName="category" [ngClass]="{ 'is-invalid-input': !businessForm.controls['category'].pristine && !businessForm.controls['category'].valid }">
+              <option value="">Select</option>
+              <option *ngFor="let category of categories" value="{{ category.name }}">{{ category.name }}</option>
+            </select>
+          </label>
+          <small *ngIf="!businessForm.controls['category'].pristine && businessForm.controls['category'].errors" class="form-error is-visible">Category is Required!</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-6 columns">
+          <label>Years In Business
+            <input type="text" placeholder="Years In Business" formControlName="years_in_business">
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>Description
+            <textarea formControlName="description"></textarea>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-6 columns">
+          <label [ngClass]="{ 'is-invalid-label': !businessForm.controls['email'].pristine && !businessForm.controls['email'].valid }">Email
+            <input type="text" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid-input': !businessForm.controls['email'].pristine && !businessForm.controls['email'].valid }">
+          </label>
+          <small *ngIf="!businessForm.controls['email'].pristine && businessForm.controls['email'].errors && businessForm.controls['email'].errors.required" class="form-error is-visible">Email is Required!</small>
+          <small *ngIf="!businessForm.controls['email'].pristine && businessForm.controls['email'].errors && businessForm.controls['email'].errors.validateEmail" class="form-error is-visible">Not Valid Email!</small>
+        </div>
+        <div class="medium-6 columns">
+          <label>Phone
+            <input type="text" placeholder="Phone" formControlName="phone">
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-6 columns">
+          <label>Street Address
+            <input type="text" placeholder="Street Address" formControlName="street_address">
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label [ngClass]="{ 'is-invalid-label': !businessForm.controls['city'].pristine && !businessForm.controls['city'].valid }">City
+            <input type="text" placeholder="City" formControlName="city" [ngClass]="{ 'is-invalid-input': !businessForm.controls['city'].pristine && !businessForm.controls['city'].valid }">
+          </label>
+          <small *ngIf="!businessForm.controls['city'].pristine && businessForm.controls['city'].errors" class="form-error is-visible">City is Required!</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-6 columns">
+          <label>State
+            <input type="text" placeholder="State" formControlName="state">
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>Zipcode
+            <input type="text" placeholder="Zipcode" formControlName="zipcode">
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <button type="submit" class="button" [disabled]="!businessForm.valid">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

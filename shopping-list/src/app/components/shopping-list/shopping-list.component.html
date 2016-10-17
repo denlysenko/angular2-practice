@@ -1,0 +1,25 @@
+<div class="ui raised segment">
+  <h3>Add New Item</h3>
+  <new-item></new-item>
+</div>
+
+<div *ngIf="items.length" class="ui raised segment">
+  <h3>List of Items</h3>
+  <div class="ui labeled input">
+    <div class="ui label">Filter:</div>
+    <input type="text" #filter (keyup)="0">
+  </div>
+  <div class="ui huge middle aligned divided list">
+    <div class="item" *ngFor="let item of items | filter:filter.value">
+      <div class="right floated content">
+        <div class="ui button" (click)="selectItem(item)">Details</div>
+      </div>
+      <div class="content">{{ item.name }} ({{ item.amount }})</div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="selectedItem" class="ui raised segment">
+  <h3>Edit Item</h3>
+  <item-details [item]="selectedItem" (deletedItem)="unselectItem()"></item-details>
+</div>
